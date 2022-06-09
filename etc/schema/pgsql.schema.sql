@@ -1,5 +1,7 @@
 /* Icinga Web 2 | (c) 2014 Icinga GmbH | GPLv2+ */
 
+CREATE EXTENSION IF NOT EXISTS citext;
+
 CREATE OR REPLACE FUNCTION unix_timestamp(timestamp with time zone) RETURNS bigint AS '
         SELECT EXTRACT(EPOCH FROM $1)::bigint AS result
 ' LANGUAGE sql;
@@ -140,7 +142,7 @@ INSERT INTO icingaweb_schema (version, timestamp)
 
 CREATE TABLE "icingaweb_dashboard_owner" (
   "id"        serial,
-  "username"  character varying(254) NOT NULL
+  "username"  citext NOT NULL
 );
 
 ALTER TABLE ONLY "icingaweb_dashboard_owner"

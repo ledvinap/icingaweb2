@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS citext;
+
 CREATE DOMAIN binary20 AS bytea CONSTRAINT exactly_20_bytes_long CHECK (VALUE IS NULL OR octet_length(VALUE) = 20);
 
 CREATE DOMAIN tinyuint AS smallint CONSTRAINT between_0_and_255 CHECK (VALUE IS NULL OR VALUE BETWEEN 0 AND 255);
@@ -18,7 +20,7 @@ INSERT INTO icingaweb_schema ("version", "timestamp")
 
 CREATE TABLE "icingaweb_dashboard_owner" (
   "id"        serial,
-  "username"  character varying(254) NOT NULL
+  "username"  citext NOT NULL
 );
 
 ALTER TABLE ONLY "icingaweb_dashboard_owner"
