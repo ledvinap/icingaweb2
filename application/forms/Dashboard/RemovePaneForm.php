@@ -28,8 +28,8 @@ class RemovePaneForm extends BaseDashboardForm
 
     protected function onSuccess()
     {
-        $home = $this->dashboard->getActiveHome();
-        $pane = $home->getActivePane();
+        $home = $this->dashboard->getActiveEntry();
+        $pane = $home->getActiveEntry();
 
         try {
             $home->removeEntry($pane);
