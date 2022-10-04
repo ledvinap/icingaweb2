@@ -159,17 +159,16 @@ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.r
 
 !!! info
 
-    A paid repository subscription is required for RHEL repositories. Get more information on
+    A paid repository subscription is required for SLES repositories. Get more information on
     [icinga.com/subscription](https://icinga.com/subscription)
-
-    Don't forget to fill in the username and password section with your credentials in the local .repo file.
 
 ```bash
 rpm --import https://packages.icinga.com/icinga.key
 
-zypper ar https://packages.icinga.com/subscription/sles/ICINGA-release.repo
+zypper ar -r https://packages.icinga.com/subscription/sles/$releasever/release/ icinga-stable-release
 zypper ref
 ```
+After this, zypper asks you to enter your subscription user name and password.
 
 You need to additionally enable a couple of SLES repositories to fulfill dependencies:
 
